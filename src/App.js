@@ -1,3 +1,6 @@
+import React from 'react';
+import Header from 'header';
+import Main from 'main';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +21,12 @@ function App() {
           Learn React
         </a>
       </header>
+      <>
+      <Header/>
+      
+      <Main />
+      <footer> Author: Mary Kariuki</footer>
+
     </div>
   );
 }
