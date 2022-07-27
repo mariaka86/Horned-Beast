@@ -1,5 +1,8 @@
 import React from "react";
 import "./HornedBeast.css"
+import Button from 'react-bootstrap/Button';
+
+
 
 
 
@@ -33,8 +36,9 @@ class HornedBeast extends React.Component{
                 <h2>{this.props.title}</h2>
                 <img src={this.props.image_url} alt={this.props.title}/> 
                  <p> {this.props.description}</p>
-                 <p>{this.state.favorites} favorites </p>
-                 <p onClick={this.handleFavorites}> Click on favorite beast</p>
+                 <p>{this.state.favorites} favorites 💖</p>
+                 <Button onClick={this.handleFavorites}> Vote on favorite beast </Button>
+            
             </div>
 
         )
