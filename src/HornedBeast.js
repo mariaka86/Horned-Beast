@@ -4,9 +4,6 @@ import Button from 'react-bootstrap/Button';
 
 
 
-
-
-
 class HornedBeast extends React.Component{
     constructor(props){
         super(props);
@@ -24,15 +21,17 @@ class HornedBeast extends React.Component{
        });
     };
 
-
-
-
-
+    helperFunctionH3Click = () => {
+        // this.props.handleOnShowModal('');
+        this.props.handleOnShowModal(this.props.title)
+    
+      };
+      
 
     render(){
         console.log('props in the hornedbeast',this.props)
         return(
-            <div>
+             <div>
                 <h2>{this.props.title}</h2>
                 <img src={this.props.image_url} alt={this.props.title}/> 
                  <p> {this.props.description}</p>
