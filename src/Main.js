@@ -1,36 +1,101 @@
 import React from "react";
 import HornedBeast from './HornedBeast.js';
-
+import Form from 'react-bootstrap/Form';
 import './Main.css'
-
+import data from './data.json'
 
 
 class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+            wayToSort: "",
+            sortedData: data,
+
+        };
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let title = event.target.title.value;
+        let selected = event.target.selected.value;
 
 
-render(){
-
-    //let beasts = [];
-    let beasts=this.props.data.map ((newHornedBeast, index)=>{
-
-        return (<HornedBeast 
-            title={newHornedBeast.title}
-             image_url={newHornedBeast.image_url} 
-             description={newHornedBeast.description} 
-             handleOnShowModal={this.props.handleOnShowModal}
-             key={index}/>
-             );
+        this.setState({
+            title: title,
+            numberOfHorns: selected,
         })
-   
-return (
-    <main>
-        {/* <HornedBeast title="UniWhal" imageUrl="http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg" description="A unicorn and a narwhal nuzzling their horns"/>
-        <HornedBeast title="Rhino Family" imageUrl="https://images.unsplash.com/photo-1512636618879-bbe79107e9e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd9460ee6d1ddbb6b1ca7be86dfc4590&auto=format&fit=crop&w=1825&q=80" description="Parent rhino with two babies"/>
-        <HornedBeast title="Unicorn Head" imageUrl="https://www.dhresource.com/0x0s/f2-albu-g5-M00-1A-11-rBVaI1hsIIiALxKzAAIHjSU3VkE490.jpg/wholesale-halloween-costume-prop-unicorn.jpg" description = "Someone wearing a very silly unicorn head mask"/> */}
-        {beasts}
-    </main>
+    }
 
-    )
-}
-}
+
+
+
+    handleSelect = (event) => {
+       let selected = event.target.value;
+       if (selected === "1"){
+        let newData = data.filter((number)=> number %2===1);
+        this.setState ({sortedData:newData});
+       }else if (selected === 2){
+        let newData = data.filter((number)=> number %2===0);
+        this.setState ({sortedData:newData});
+       }else if (selected === 3){
+        let newData = data.filter((number)=> number %2===1);
+        this.setState ({sortedData:newData});
+        } else{
+            this.setState({sortedData:data});
+        }  
+    }; 
+
+        
+        
+
+
+        render(){
+
+            //let beasts = [];
+            let beasts = this.state.sortedData.map ((newHornedBeast, index)=>{
+                // console.log('mapxxxxxxxxxx',newHornedBeast);
+                return <HornedBeast
+                title={newHornedBeast.title}
+                image_url={newHornedBeast.image_url}
+                description={newHornedBeast.description}
+                handleOnShowModal={this.props.handleOnShowModal}
+                key={this.index} />
+                 })
+
+            return (
+                <>
+                    <div> Forms in React</div>
+                    <div beastName="Number of Horns">
+                        <Form onSubmit={this.handleSubmit} />
+                        <Form.Group>
+                            <p> Number of Horns</p>
+                            <Form.Select title="selected" onChange={this.handleSelect}>
+                                <option value="All"> All</option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="100"> 100</option>
+                            </Form.Select>
+                        </Form.Group>
+                        <button type= "submit"> submit</button>
+                        {/* <HornedBeast
+                            title={beasts.title}
+                            image_url={beasts.image_url}
+                            description={beasts.description}
+                            handleOnShowModal={this.props.handleOnShowModal}
+                            key={this.index} /> */}
+                    </div>
+
+
+                </>
+
+            )
+
+        }
+
+    }
+
+
 export default Main;
