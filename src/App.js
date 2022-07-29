@@ -6,6 +6,7 @@ import Footer from './Footer.js'
 import SelectedBeast from './SelectedBeast.js'
 
 
+
 class App extends React.Component{
   // create a constructor function
   constructor (props){
