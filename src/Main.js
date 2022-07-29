@@ -10,64 +10,65 @@ class Main extends React.Component {
         super(props);
         this.state = {
             title: "",
-            wayToSort: "",
             sortedData: data,
 
         };
     }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        let title = event.target.title.value;
-        let selected = event.target.selected.value;
-
-
-        this.setState({
-            title: title,
-            numberOfHorns: selected,
-        })
-    }
+    // this'll probably be in another file.
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     let title = event.target.title.value;
+    //     let selected = event.target.selected.value;
 
 
+    //     this.setState({
+    //         title: title,
+    //         numberOfHorns: selected,
+    //     })
+    // }
 
 
-    handleSelect = (event) => {
-       let selected = event.target.value;
-       if (selected === "1"){
-        let newData = data.filter((number)=> number %2===1);
-        this.setState ({sortedData:newData});
-       }else if (selected === 2){
-        let newData = data.filter((number)=> number %2===0);
-        this.setState ({sortedData:newData});
-       }else if (selected === 3){
-        let newData = data.filter((number)=> number %2===1);
-        this.setState ({sortedData:newData});
-        } else{
-            this.setState({sortedData:data});
-        }  
-    }; 
+
+
+
+    // fix these conditionals in the filter
+    // handleSelect = (event) => {
+    //    let selected = event.target.value;
+    //    if (selected === "1"){
+    //     let newData = data.filter((number)=> number ===1);
+    //     this.setState ({sortedData:newData});
+    //    }else if (selected === 2){
+    //     let newData = data.filter((number)=> number===2);
+    //     this.setState ({sortedData:newData});
+    //    }else if (selected === 3){
+    //     let newData = data.filter((number)=> number===3);
+    //     this.setState ({sortedData:newData});
+    //     } else{
+    //         this.setState({sortedData:data});
+    //     }  
+    // }; 
 
         
         
 
 
         render(){
-
+            console.log ('sorted data', this.state.sortedData);
             //let beasts = [];
-            let beasts = this.state.sortedData.map ((newHornedBeast, index)=>{
-                // console.log('mapxxxxxxxxxx',newHornedBeast);
-                return <HornedBeast
-                title={newHornedBeast.title}
-                image_url={newHornedBeast.image_url}
-                description={newHornedBeast.description}
-                handleOnShowModal={this.props.handleOnShowModal}
-                key={this.index} />
-                 })
+            // let beasts = this.state.sortedData.map ((newHornedBeast, index)=>{
+            //    console.log('mapxxxxxxxxxx',newHornedBeast);
+            //     return <HornedBeast
+            //     title={newHornedBeast.title}
+            //     image_url={newHornedBeast.image_url}
+            //     description={newHornedBeast.description}
+            //     handleOnShowModal={this.props.handleOnShowModal}
+            //     key={this.index} />
+            //      })
 
             return (
                 <>
                     <div> Forms in React</div>
-                    <div beastName="Number of Horns">
+    
                         <Form onSubmit={this.handleSubmit} />
                         <Form.Group>
                             <p> Number of Horns</p>
@@ -80,14 +81,11 @@ class Main extends React.Component {
                             </Form.Select>
                         </Form.Group>
                         <button type= "submit"> submit</button>
-                        {/* <HornedBeast
-                            title={beasts.title}
-                            image_url={beasts.image_url}
-                            description={beasts.description}
-                            handleOnShowModal={this.props.handleOnShowModal}
-                            key={this.index} /> */}
-                    </div>
-
+                   
+                     {/* {this.state.sortedData.map((beast, idx) => (
+            console.log('beastnnnnnnnnn', beast);
+            
+          ))} */}
 
                 </>
 
