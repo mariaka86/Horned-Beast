@@ -9,7 +9,7 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "",
+            allBeasts: "",
             sortedData: data,
 
         };
@@ -56,15 +56,15 @@ class Main extends React.Component {
             console.log (data);
             // console.log ('sorted data', this.state.sortedData);
             // let beasts = [];
-            let beasts = this.state.sortedData.map ((newHornedBeast)=>{
+            let allBeasts = this.state.sortedData.map ((newHornedBeast,index)=>{
             //  
                 return <HornedBeast
                 title={newHornedBeast.title}
                 image_url={newHornedBeast.image_url}
                 description={newHornedBeast.description}
                 handleOnShowModal={this.props.handleOnShowModal}
-                key={this.index} />
-                 })
+                key={index} />
+                 });
 
             return (
                 <>
@@ -82,7 +82,7 @@ class Main extends React.Component {
                             </Form.Select>
                         </Form.Group>
                         <button type= "submit"> submit</button>
-                        {beasts}
+                        {allBeasts}
                         
                         {/* <HornedBeast
                 title={newHornedBeast.title}

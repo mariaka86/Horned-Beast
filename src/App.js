@@ -6,7 +6,6 @@ import Footer from './Footer.js'
 import SelectedBeast from './SelectedBeast.js'
 
 
-
 class App extends React.Component{
   // create a constructor function
   constructor (props){
@@ -19,10 +18,10 @@ class App extends React.Component{
   }
 
 
-  handleOnShowModal = (title) => {
+  handleOnShowModal = (name) => {
     this.setState({
       showModal:true,
-      selectBeast: title
+      selectBeast: name
 
     })
   }
@@ -31,7 +30,7 @@ class App extends React.Component{
     this.setState({
       showModal: false
     })
-  }
+  };
 
 
   
