@@ -20,13 +20,9 @@ class HornedBeast extends React.Component{
 
        });
     };
+   
 
-    helperFunctionH3Click = () => {
-        // this.props.handleOnShowModal('');
-        this.props.handleOnShowModal(this.props.title)
-    
-      };
-      
+   
 
     render(){
         console.log('props in the hornedbeast',this.props);
