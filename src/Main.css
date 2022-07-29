@@ -1,6 +1,5 @@
-main{
-    display : flex;
-    flex-wrap: wrap;
-    justify-content:space-around;
 
+img {
+    height:250px;
+    width: 250 px;
 }

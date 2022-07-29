@@ -56,7 +56,7 @@ class Main extends React.Component {
             console.log (data);
             // console.log ('sorted data', this.state.sortedData);
             // let beasts = [];
-            let beasts = this.state.sortedData.map ((newHornedBeast, index)=>{
+            let beasts = this.state.sortedData.map ((newHornedBeast)=>{
             //  
                 return <HornedBeast
                 title={newHornedBeast.title}
