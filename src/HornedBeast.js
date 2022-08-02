@@ -1,6 +1,6 @@
 import React from "react";
 import "./HornedBeast.css"
-import Button from 'react-bootstrap/Button';
+import {Card,Col, Button} from 'react-bootstrap';
 
 
 
@@ -21,20 +21,34 @@ class HornedBeast extends React.Component{
        });
     };
    
+    helperFunctionEnlargeClick = () => {
+        this.props.handleOnShowModal(this.props.main)
+    };
 
    
 
     render(){
-        console.log('props in the hornedbeast',this.props);
         return(
-             <div>
+        <Col className="mt-4">
+                        <Card className="h-100 p-3" >
+                            <Card.Title onClick={this.helperFunctionEnlargeClick} >{this.props.title}</Card.Title>
+                            <Card.Img
+                                src={this.props.image_URL}
+                                alt={this.props.title}
+                                onClick={this.props.addHornedAnimal}
+                            />
+
+        
+             <main>
                 <h2>{this.props.title}</h2>
                 <img src={this.props.image_url} alt={this.props.title}/> 
                  <p> {this.props.description}</p>
                  <p>{this.state.favorites} favorites 💖</p>
                  <Button onClick={this.handleFavorites}> Vote on favorite beast </Button>
             
-            </div>
+            </main>
+            </Card>
+            </Col>
 
         )
     }
