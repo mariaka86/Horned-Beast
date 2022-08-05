@@ -22,7 +22,8 @@ class HornedBeast extends React.Component{
     };
    
     helperFunctionEnlargeClick = () => {
-        this.props.handleOnShowModal(this.props.main)
+        this.handleFavorites();
+        this.props.handleOnShowModal(this.props)
     };
 
    
@@ -41,7 +42,7 @@ class HornedBeast extends React.Component{
         
              <main>
                 <h2>{this.props.title}</h2>
-                <img src={this.props.image_url} alt={this.props.title}/> 
+                <img src={this.props.image_url} alt={this.props.title} onClick={this.helperFunctionEnlargeClick}/> 
                  <p> {this.props.description}</p>
                  <p>{this.state.favorites} favorites 💖</p>
                  <Button onClick={this.handleFavorites}> Vote on favorite beast </Button>

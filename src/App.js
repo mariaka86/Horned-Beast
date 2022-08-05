@@ -13,7 +13,7 @@ class App extends React.Component{
   constructor (props){
     super(props)
     this.state = {
-      beasts: '',
+      beast: '',
       showModal: false,
       selectBeast:{}
     }
@@ -56,8 +56,12 @@ class App extends React.Component{
       <Footer />
       <Modal show ={this.state.showModal} onHide = {this.handleOnHide}>
         <Modal.Header closeButton>
-      <Modal.Title>{this.state.selectBeast}</Modal.Title>
+      <Modal.Title>{this.state.beast.title}</Modal.Title>
       </Modal.Header>
+      <Modal.Body>
+      <img src={this.state.beast.image_url} alt={this.state.beast.title}/> 
+        
+      </Modal.Body>
     </Modal> 
       </>
     )
