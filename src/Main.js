@@ -15,38 +15,39 @@ class Main extends React.Component {
         };
     }
     // this'll probably be in another file.
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     let title = event.target.title.value;
-    //     let selected = event.target.selected.value;
-
-
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let allBeasts = event.target.title.value;
+       
     //     this.setState({
     //         title: title,
     //         numberOfHorns: selected,
     //     })
-    // }
+    };
 
 
 
 
 
     // fix these conditionals in the filter
-    // handleSelect = (event) => {
-    //    let selected = event.target.value;
-    //    if (selected === "1"){
-    //     let newData = data.filter((number)=> number ===1);
-    //     this.setState ({sortedData:newData});
-    //    }else if (selected === 2){
-    //     let newData = data.filter((number)=> number===2);
-    //     this.setState ({sortedData:newData});
-    //    }else if (selected === 3){
-    //     let newData = data.filter((number)=> number===3);
-    //     this.setState ({sortedData:newData});
-    //     } else{
-    //         this.setState({sortedData:data});
-    //     }  
-    // }; 
+    handleSelect = (event) => {
+       let selected = event.target.value;
+       if (selected === "1"){
+        let newData = data.filter((hornsNum)=> hornsNum ===1);
+        this.setState ({sortedData:newData});
+       }else if (selected === "2"){
+        let newData = data.filter((hornsNum)=> hornsNum===2);
+        this.setState ({sortedData:newData});
+       }else if (selected === "3"){
+        let newData = data.filter((hornsNum)=> hornsNum===3);
+        this.setState ({sortedData:data});
+       }else if (selected === "100") {
+            let newHorns = data.filter((hornsNum) => hornsNum === 100);
+            this.setState({ StoredData:data });
+        } else{
+            this.setState({sortedData:data});
+        }  
+    }; 
 
         
         
@@ -72,15 +73,16 @@ class Main extends React.Component {
     
                         <Form onSubmit={this.handleSubmit} />
                         <Form.Group>
-                            <p> Number of Horns</p>
-                            <Form.Select title="selected" onChange={this.handleSelect}>
+                            <label> Number of Horns </label>
+                            <Form.Select title="selected" onChange={this.handleSubmit}>
                                 <option value="All"> All</option>
                                 <option value="1"> 1</option>
                                 <option value="2"> 2</option>
                                 <option value="3"> 3</option>
                                 <option value="100"> 100</option>
                             </Form.Select>
-                        </Form.Group>
+                        </Form.Group><br></br>
+
                         <button type= "submit"> submit</button>
                         {allBeasts}
                         

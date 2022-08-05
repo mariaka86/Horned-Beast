@@ -15,11 +15,6 @@ class SelectedBeast extends React.Component {
     }
 
 
-    // helperFunctionH3Click = () => {
-    //     this.props.handleOnShowModal(this.props.title)
-    // };
-
-
-
+    
 }
  export default SelectedBeast;
