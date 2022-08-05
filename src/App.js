@@ -3,7 +3,9 @@ import './App.css'
 import Header from './Header.js';
 import Main from './Main.js'
 import Footer from './Footer.js'
-import SelectedBeast from './SelectedBeast.js'
+// import SelectedBeast from './SelectedBeast.js'
+import data from './data.json'
+import Modal from 'react-bootstrap/Modal'
 
 
 class App extends React.Component{
@@ -11,17 +13,24 @@ class App extends React.Component{
   constructor (props){
     super(props)
     this.state = {
-      beasts: '',
+      beast: '',
       showModal: false,
       selectBeast:{}
     }
   }
 
 
+
+  addHornedAnimal= ()=>{
+    this.setState({
+      hornedAnimal : this.state.hornedAnimal + '💖'
+    });
+  }
+
   handleOnShowModal = (name) => {
     this.setState({
       showModal:true,
-      selectBeast: name
+      beast: name
 
     })
   }
@@ -40,12 +49,20 @@ class App extends React.Component{
       <>
       <Header/>
       <Main
-      handleOnShowModal={this.handleOnShowModal}
+      addHornedAnimal = {this.addHornedAnimal}
+      data= {data}
+      handleOnShowModal= {this.handleOnShowModal}
       />
       <Footer />
-      <SelectedBeast handleOnShowModal= {this.handleOnShowModal}/>
-
-    
+      <Modal show ={this.state.showModal} onHide = {this.handleOnHide}>
+        <Modal.Header closeButton>
+      <Modal.Title>{this.state.beast.title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <img src={this.state.beast.image_url} alt={this.state.beast.title}/> 
+        <p>{this.state.beast.description}</p>
+      </Modal.Body>
+    </Modal> 
       </>
     )
   }
