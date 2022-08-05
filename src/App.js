@@ -30,7 +30,7 @@ class App extends React.Component{
   handleOnShowModal = (name) => {
     this.setState({
       showModal:true,
-      selectBeast: name
+      beast: name
 
     })
   }
@@ -60,7 +60,7 @@ class App extends React.Component{
       </Modal.Header>
       <Modal.Body>
       <img src={this.state.beast.image_url} alt={this.state.beast.title}/> 
-        
+        <p>{this.state.beast.description}</p>
       </Modal.Body>
     </Modal> 
       </>

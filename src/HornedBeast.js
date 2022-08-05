@@ -32,14 +32,8 @@ class HornedBeast extends React.Component{
         return(
         <Col className="mt-4">
                         <Card className="h-100 p-3" >
-                            <Card.Title onClick={this.helperFunctionEnlargeClick} >{this.props.title}</Card.Title>
-                            <Card.Img
-                                src={this.props.image_URL}
-                                alt={this.props.title}
-                                onClick={this.props.addHornedAnimal}
-                            />
-
-        
+                            <Card.Title onClick={this.helperFunctionEnlargeClick} ></Card.Title>
+                           
              <main>
                 <h2>{this.props.title}</h2>
                 <img src={this.props.image_url} alt={this.props.title} onClick={this.helperFunctionEnlargeClick}/> 
