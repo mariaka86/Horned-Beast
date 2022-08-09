@@ -34,14 +34,14 @@ class HornedBeast extends React.Component{
                         <Card className="h-100 p-3" >
                             <Card.Title onClick={this.helperFunctionEnlargeClick} ></Card.Title>
                            
-             <main>
+             <Card.Text>
                 <h2>{this.props.title}</h2>
                 <img src={this.props.image_url} alt={this.props.title} onClick={this.helperFunctionEnlargeClick}/> 
                  <p> {this.props.description}</p>
                  <p>{this.state.favorites} favorites 💖</p>
                  <Button onClick={this.handleFavorites}> Vote on favorite beast </Button>
             
-            </main>
+            </Card.Text>
             </Card>
             </Col>
 
