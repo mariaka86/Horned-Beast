@@ -6,6 +6,7 @@ import Footer from './Footer.js'
 // import SelectedBeast from './SelectedBeast.js'
 import data from './data.json'
 import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form';
 
 
 class App extends React.Component{
@@ -15,7 +16,8 @@ class App extends React.Component{
     this.state = {
       beast: '',
       showModal: false,
-      selectBeast:{}
+      selectBeast:{},
+      sortedData:data
     }
   }
 
@@ -34,23 +36,57 @@ class App extends React.Component{
 
     })
   }
-
+ 
   handleOnHide = () => {
     this.setState({
       showModal: false
     })
   };
+  handleSelect = (event) => {
+    let selected = event.target.value;
+    if (selected === "1"){
+     let newData = data.filter(hornsNum=> hornsNum===1);
+     this.setState ({sortedData:newData});
+    }else if (selected === "2"){
+     let newData = data.filter(hornsNum=> hornsNum===2);
+     this.setState ({sortedData:newData});
+    }else if (selected === "3"){
+     let newData = data.filter(hornsNum=> hornsNum===3);
+     this.setState ({sortedData:newData});
+    }else if (selected === "100") {
+         let newData = data.filter(hornsNum => hornsNum===100);
+         this.setState({sortedData:newData});
+     } else{
+         this.setState({sortedData:data});
+     }  
+ }; 
 
 
   
   render(){
+    let numbers= this.state.sortedData.map((hornsNum,index)=>{
+      return hornsNum;
+    })
     return(
 
       <>
       <Header/>
+                    <Form>
+                        <Form.Group>
+                            <label> Number of Horns </label>
+                            <Form.Select title="selected" onChange={this.handleSelect}>
+                                <option value="All"> All</option>
+                                <option value="1"> 1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="100"> 100</option>
+                            </Form.Select>
+                        </Form.Group><br></br>
+                       </Form>
+
       <Main
       addHornedAnimal = {this.addHornedAnimal}
-      data= {data}
+      data= {numbers}
       handleOnShowModal= {this.handleOnShowModal}
       />
       <Footer />
