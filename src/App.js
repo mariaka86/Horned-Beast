@@ -45,16 +45,16 @@ class App extends React.Component{
   handleSelect = (event) => {
     let selected = event.target.value;
     if (selected === "1"){
-     let newData = data.filter(hornsNum=> hornsNum===1);
+     let newData = data.filter(hornsNum=> hornsNum.horns===1);
      this.setState ({sortedData:newData});
     }else if (selected === "2"){
-     let newData = data.filter(hornsNum=> hornsNum===2);
+     let newData = data.filter(hornsNum=> hornsNum.horns===2);
      this.setState ({sortedData:newData});
     }else if (selected === "3"){
-     let newData = data.filter(hornsNum=> hornsNum===3);
+     let newData = data.filter(hornsNum=> hornsNum.horns===3);
      this.setState ({sortedData:newData});
     }else if (selected === "100") {
-         let newData = data.filter(hornsNum => hornsNum===100);
+         let newData = data.filter(hornsNum => hornsNum.horns===100);
          this.setState({sortedData:newData});
      } else{
          this.setState({sortedData:data});
